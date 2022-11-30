@@ -1,46 +1,51 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package lab5;
 
+import java.util.Random;
+import java.util.Scanner;
+
 /**
  *
- * @author S2115567
+ * @author Wei Han
  */
 public class Q3 {
 
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
-        int[][] matrix = new int[3][3];
-        int[][] newMatrix = new int[3][3];
-        int count = 1;
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                matrix[i][j] = count++;
+        //Enter employee
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the number of employee: ");
+        int N = sc.nextInt();
+        Random r = new Random();
+
+        //Create array of employee with column representing days and work hours
+        int[][] workHoursForEmployee = new int[N][7];
+
+        //Generate random work hours for seven days of employee
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < 7; j++) {
+                workHoursForEmployee[i][j] = r.nextInt(8) + 1;
             }
         }
 
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                System.out.print(matrix[i][j] + " ");
-            }
-            System.out.println("");
-        }
+        //Label
+        System.out.printf("%5s%5s%5s%5s%5s%5s%5s%7s\n", "Mon", "Tue", "Wed", "Thu",
+                "Fri", "Sat", "Sun", "Total");
 
-        //Set first row as third column
-        //Set second row as second column...
-        for (int i = 0, x = matrix.length - 1; i < matrix.length; i++, x--) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                newMatrix[j][x] = matrix[i][j];
+        //Go through each array to display work hours and calculate the total hours
+        for (int i = 0; i < N; i++) {
+            int total = 0;
+            for (int j = 0; j < 7; j++) {
+                System.out.printf("%5s", workHoursForEmployee[i][j]);
+                total += workHoursForEmployee[i][j];
             }
-        }
-
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                System.out.print(newMatrix[i][j] + " ");
-            }
-            System.out.println("");
+            System.out.printf("%7s\n", total);
         }
     }
+
 }
