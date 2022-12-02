@@ -81,9 +81,9 @@ public class Q5 {
             //To choose upper mid, can do low + (high - low + 1) / 2
             int mid = low + (high - low) / 2;
 
-            //Adjust the range based on the target and mid value
+            //Adjust the condition based on the target and mid value
             //Note: To determine the condition, you need to consider
-            //the way you choose uppermid or lower mid
+            //the way you choose upper mid or lower mid
             //Imagine only 2 values remains in the binary search
             //Example:
             //  3,   2
@@ -91,11 +91,11 @@ public class Q5 {
             //if you choose 3 as mid (lower mid),
             //    3,      2
             // low/mid,  high
-            //if target > nums[mid], high = mid, lo >= high so the loops will stop, this is GOOD.
+            //if target >= nums[mid] (go to else statment), high = mid, lo >= high so the loops will stop, this is GOOD.
             //But if you choose 2 as mid (upper mid)
             //  3,     2
             // low, high/mid
-            //if target > nums[mid], high = mid, lo < high, nothing will change
+            //if target >= nums[mid] (go to else statment), high = mid, lo < high, nothing will change
             //There will still be 2 values, causing infinite loops,
             //so you need to choose the condition
             //based on lower or upper mid
@@ -107,7 +107,7 @@ public class Q5 {
             }
         }
 
-        //After the loops end, there will only have 1 values left
+        //After the loops end, there will only have 1 value left
         //Since low == high
         //We can check whether the target value matches our binary searches value
         if (nums[low] == target) {
