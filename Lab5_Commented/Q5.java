@@ -91,16 +91,16 @@ public class Q5 {
             //if you choose 3 as mid (lower mid),
             //    3,      2
             // low/mid,  high
-            //if target >= nums[mid] (go to else statment), high = mid, lo >= high so the loops will stop, this is GOOD.
+            //if target <= nums[mid] (go to else statment), high = mid, lo >= high so the loops will stop, this is GOOD.
             //But if you choose 2 as mid (upper mid)
             //  3,     2
             // low, high/mid
-            //if target >= nums[mid] (go to else statment), high = mid, lo < high, nothing will change
+            //if target <= nums[mid] (go to else statment), high = mid, lo < high, nothing will change
             //There will still be 2 values, causing infinite loops,
             //so you need to choose the condition
             //based on lower or upper mid
             //Think carefully, think about what will happen when only 2 values
-            if (target < nums[mid]) {
+            if (target > nums[mid]) {
                 low = mid + 1;
             } else {
                 high = mid;
